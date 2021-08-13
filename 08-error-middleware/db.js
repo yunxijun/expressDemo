@@ -6,7 +6,7 @@ const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 
 
-const dbPath = path.join(__dirname, './db123.json')
+const dbPath = path.join(__dirname, './db.json')
 
 exports.getDb = async () => {
     const data = await readFile(dbPath, 'utf8')

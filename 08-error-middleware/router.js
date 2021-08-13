@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
     try {
         const db = await getDb()
         const todo = db.todos.find(todo => todo.id === Number.parseInt(req.params.id))
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
         // 1. 获取客户端请求体参数
         // console.log(req.body)
@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
     // 这里有bug 还是要做数据校验的
     try {
         const todo = req.body
@@ -79,7 +79,7 @@ router.patch('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
     try {
         const todoId = Number.parseInt(req.params.id)
         const db = await getDb()
