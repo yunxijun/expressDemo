@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "Git-Bash": {
+            "path": "D:\\Git\\bin\\bash.exe",// Git的bin文件夹下bash.exe的路径，注意不是git-bash.exe，否则会独立拉起git bash窗口
+            "args": []
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git-Bash"
+    
+}
