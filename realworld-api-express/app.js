@@ -6,6 +6,8 @@ const cors = require('cors')
 const router = require('./router')
 const errorHandle = require('./middleware/error-handler')
 
+require('./model')
+
 const app = express()
 
 // 配置中间件
@@ -20,7 +22,6 @@ const PORT = process.env.PORT || 3000
 
 // 挂载路由
 app.use('/api', router)
-
 
 // 挂载同意处理服务端错误中间件
 
