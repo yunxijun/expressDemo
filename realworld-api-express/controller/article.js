@@ -1,5 +1,5 @@
 // 获取文章列表
-exports.getArticleLists = async (req, res, next) => {
+exports.getArticleList = async (req, res, next) => {
     try {
         // 处理请求
         res.send('GET /')
