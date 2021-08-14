@@ -12,6 +12,7 @@ exports.register = async(req, res, next) => {
 // 用户登录
 exports.login = async(req, res, next) => {
     try {
+        JSON.parse('dsatats')
         // 处理请求
         res.send('post /users/login')
         
