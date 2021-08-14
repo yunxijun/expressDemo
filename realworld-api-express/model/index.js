@@ -20,6 +20,11 @@ db.once('open', function () {
     console.log('MongoDB 数据库连接成功');
 });
 
+// 组织导出模型类
+module.exports = {
+    User:mongoose.model('User', require('./user')),
+    Article:mongoose.model('Article', require('./article'))
+}
 // const Cat = mongoose.model('Cat', { name: String });
 
 // const kitty = new Cat({ name: 'Zildjian' });

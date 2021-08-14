@@ -1,3 +1,5 @@
+const { User } = require('../model')
+
 // 用户注册
 exports.register = async(req, res, next) => {
     try {
@@ -8,9 +10,12 @@ exports.register = async(req, res, next) => {
             // 2.2 业务数据验证
         
         // 3. 验证通过保存数据库
-        
+        const user = new User(req.body.user)
+        await user.save()
         // 4. 发送响应
-        res.send('post register')
+        res.status(201).json({
+            user
+        })
         
     } catch (error) {
         next(error)
