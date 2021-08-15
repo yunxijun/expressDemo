@@ -12,8 +12,8 @@ exports.register = async(req, res, next) => {
         // 3. 验证通过保存数据库
         const user = new User(req.body.user)
         await user.save()
-        user = user.toJSON()
-        delete user.paassword
+        // user = user.toJSON()
+        // delete user.paassword
         // 4. 发送响应
         res.status(201).json({
             user
@@ -27,7 +27,6 @@ exports.register = async(req, res, next) => {
 // 用户登录
 exports.login = async(req, res, next) => {
     try {
-        JSON.parse('dsatats')
         // 处理请求
         res.send('post /users/login')
         
