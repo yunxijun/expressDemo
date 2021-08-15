@@ -52,8 +52,10 @@ exports.login = async(req, res, next) => {
 exports.getCurrentUser = async(req, res, next) => {
     try {
         // 处理请求
-
-        res.send('get /user')
+        // console.log(req.headers);
+        res.status(200).json({
+            user:req.user
+        })
         
     } catch (error) {
         next(error)
