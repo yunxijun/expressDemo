@@ -1,4 +1,6 @@
-const { validationResult } = require('express-validator');
+const { validationResult, buildCheckFunction } = require('express-validator');
+const {isValidObjectId} = require('mongoose')
+
 // can be reused by many routes
 
 // parallel processing
@@ -15,4 +17,13 @@ const validate = validations => {
     };
 };
 
-module.exports = validate
+exports = module.exports = validate
+
+
+exports.isValidObjectId = (location, field) => {
+    return buildCheckFunction(location)(field).custom(async value => {
+        if (!isValidObjectId(value)) {
+            return Promise.reject('ID 不是一个有效的objectID')
+        }
+    })
+}

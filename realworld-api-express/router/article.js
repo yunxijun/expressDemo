@@ -18,7 +18,7 @@ router.get('/:articleId',articalValidator.getArticle, articleCtrl.getSingleArtic
 router.post('/', auth, articalValidator.createArticle, articleCtrl.createArticle)
 
 // Update Article
-router.put('/:articleId', articleCtrl.updateArticle)
+router.put('/:articleId', auth, articalValidator.updateArticle, articleCtrl.updateArticle)
 
 // Delete Article
 router.delete('/:articleId', articleCtrl.deleteArticle)
