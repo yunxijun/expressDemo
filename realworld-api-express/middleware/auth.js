@@ -13,13 +13,16 @@ module.exports = async (req, res, next) => {
     }
     // 验证
     try {
-        console.log('auth 认证通过');
+        console.log(token);
         const decodedToken = await verify(token, jwtSecret)
-        console.log(decodedToken.userId);
+        console.log(decodedToken);
         req.user = await User.findById(decodedToken.userId)
-        //    console.log(req.user);
+        console.log(req.user);
+        console.log('auth 认证通过');
         next()
     } catch (error) {
+        console.log('auth 认证不通过');
+        console.log('error in auth.js');
         return res.status(401).end()
     }
 

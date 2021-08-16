@@ -3,8 +3,16 @@ const {Article} = require('../model')
 // 获取文章列表
 exports.getArticleList = async (req, res, next) => {
     try {
+        const {limit = 20, offset = 0} = req.query
+        const articles = await Article.find()
+            .skip(Number.parseInt(offset))  // 跳过多少条
+            .limit(Number.parseInt(limit))  // 取多少条
+        const articlesCount = await Article.countDocuments()
         // 处理请求
-        res.send('GET /')
+        res.status(200).json({
+            articles,
+            articlesCount
+        })
         
     } catch (error) {
         next(error)
@@ -46,6 +54,7 @@ exports.createArticle = async (req, res, next) => {
     try {
         // 处理请求
         const article = new Article(req.body.article)
+        console.log(article);
         article.author = req.user._id
         article.populate('author').execPopulate();
         await article.save()
@@ -54,6 +63,7 @@ exports.createArticle = async (req, res, next) => {
         })
         
     } catch (error) {
+        console.log('error');
         next(error)
     }
 }
