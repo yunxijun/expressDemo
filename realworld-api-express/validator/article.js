@@ -50,4 +50,6 @@ exports.updateArticle = [
     }
 ]
 
+exports.deleteArticle = exports.updateArticle
+
 

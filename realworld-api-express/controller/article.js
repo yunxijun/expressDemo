@@ -112,7 +112,9 @@ exports.updateArticle = async (req, res, next) => {
 exports.deleteArticle = async (req, res, next) => {
     try {
         // 处理请求
-        res.send('delete /:slug')
+        const article = req.article
+        await article.remove()
+        res.status(204).end()
         
     } catch (error) {
         next(error)

@@ -18,10 +18,10 @@ router.get('/:articleId',articalValidator.getArticle, articleCtrl.getSingleArtic
 router.post('/', auth, articalValidator.createArticle, articleCtrl.createArticle)
 
 // Update Article
-router.put('/:articleId', auth, articalValidator.updateArticle, articleCtrl.updateArticle)
+router.put('/:articleId', auth,  articalValidator.updateArticle, articleCtrl.updateArticle)
 
 // Delete Article
-router.delete('/:articleId', articleCtrl.deleteArticle)
+router.delete('/:articleId',auth, articalValidator.deleteArticle, articleCtrl.deleteArticle)
 
 // Add Comments to an Article
 router.post('/:articleId/comments', articleCtrl.addComments)
