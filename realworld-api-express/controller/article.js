@@ -22,7 +22,11 @@ exports.getArticleList = async (req, res, next) => {
 
         const articles = await Article.find(filter)
             .skip(Number.parseInt(offset))  // 跳过多少条
-            .limit(Number.parseInt(limit))  // 取多少条
+            .limit(Number.parseInt(limit))
+            .sort({
+                // -1降序 1 升序
+                createdAt:-1
+            })  // 取多少条
         const articlesCount = await Article.countDocuments()
         // 处理请求
         res.status(200).json({
