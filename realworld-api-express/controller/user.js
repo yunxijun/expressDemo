@@ -43,7 +43,6 @@ exports.login = async(req, res, next) => {
             ... user,
             token
         })
-        res.send('post /users/login')
         
     } catch (error) {
         next(error)
