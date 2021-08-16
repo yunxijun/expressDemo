@@ -12,30 +12,30 @@ router.get('/', articleCtrl.getArticleList)
 router.get('/feed', articleCtrl.feedArticles)
 
 // Get Article
-router.get('/:slug', articleCtrl.getSingleArticle)
+router.get('/:articleId',articalValidator.getArticle, articleCtrl.getSingleArticle)
 
 // create Article
 router.post('/', auth, articalValidator.createArticle, articleCtrl.createArticle)
 
 // Update Article
-router.put('/:slug', articleCtrl.updateArticle)
+router.put('/:articleId', articleCtrl.updateArticle)
 
 // Delete Article
-router.delete('/:slug', articleCtrl.deleteArticle)
+router.delete('/:articleId', articleCtrl.deleteArticle)
 
 // Add Comments to an Article
-router.post('/:slug/comments', articleCtrl.addComments)
+router.post('/:articleId/comments', articleCtrl.addComments)
 
 // Get Comments from an Article
-router.get('/:slug/comments', articleCtrl.getComments)
+router.get('/:articleId/comments', articleCtrl.getComments)
 
 // delete Comments from an Article
-router.delete('/:slug/comments/:id', articleCtrl.deletecomments)
+router.delete('/:articleId/comments/:id', articleCtrl.deletecomments)
 
 // Favorite Article
-router.post('/:slug/favorite', articleCtrl.favoriteArticles)
+router.post('/:articleId/favorite', articleCtrl.favoriteArticles)
 
 // Unfavorite Article
-router.delete('/:slug/favorite', articleCtrl.unfavoriteArticles)
+router.delete('/:articleId/favorite', articleCtrl.unfavoriteArticles)
 
 module.exports = router

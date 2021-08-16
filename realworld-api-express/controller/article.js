@@ -27,7 +27,14 @@ exports.feedArticles = async (req, res, next) => {
 exports.getSingleArticle = async (req, res, next) => {
     try {
         // 处理请求
-        res.send('GET /:slug')
+        const article = await Article.findById(req.params.articleId).populate('author')
+        // article.populate('author').execPopulate();
+        if (!article) {
+            return res.status(404).end()
+        }
+        res.status(200).json({
+            article
+        })
         
     } catch (error) {
         next(error)
