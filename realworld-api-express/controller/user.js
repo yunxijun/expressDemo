@@ -30,11 +30,13 @@ exports.register = async(req, res, next) => {
 exports.login = async(req, res, next) => {
     try {
         // 1. 数据验证2
-        // 2. 生产token
+        // 2. 生成token
         const user = req.user.toJSON()
         const token = await jwt.sign({
             userId:user._id
-        }, jwtSecret)
+        }, jwtSecret, {
+            expiresIn: 60 * 60
+        })
         // 处理请求
         delete user.password
         res.status(200).json({
