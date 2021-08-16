@@ -1,4 +1,5 @@
-const {Article} = require('../model')
+const {Article, User} = require('../model')
+
 
 // 获取文章列表
 exports.getArticleList = async (req, res, next) => {
@@ -6,12 +7,17 @@ exports.getArticleList = async (req, res, next) => {
         const {
             limit = 20, 
             offset = 0,
-            tag
+            tag,
+            author
         } = req.query
         const filter = {}
-        
         if (tag) {
             filter.tagList = tag
+        }
+
+        if (author) {
+            const user = await User.findOne( {username: author})
+            filter.author = user ? user._id : null
         }
 
         const articles = await Article.find(filter)
